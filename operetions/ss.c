@@ -12,3 +12,8 @@
 
 #include "push_swap.h"
 
+void	ss(t_list **a, t_list **b)
+{
+	sa(a, b);
+	sb(a, b);
+}
