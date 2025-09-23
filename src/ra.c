@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:18:11 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/17 16:18:12 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/23 13:22:45 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/23 13:22:45 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ra(t_list **a, t_list **b)
 {
-	t_list *node;
-	t_list *finallist;
-
+	t_list		*node;
+	t_list		*finallist;
 
 	node = *a;
 	finallist = *a;

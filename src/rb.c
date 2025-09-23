@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:18:14 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/17 16:18:15 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/23 13:22:32 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/23 13:22:32 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	rb(t_list **a, t_list **b)
 {
-	t_list *node;
-	t_list *finallist;
-
+	t_list		*node;
+	t_list		*finallist;
 
 	node = *b;
 	finallist = *b;

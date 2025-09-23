@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:18:09 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/17 16:18:10 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/23 13:23:03 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/23 13:23:03 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pb(t_list **a, t_list **b)
 {
-	t_list *node;
+	t_list		*node;
 
 	if (!*a)
 		return ;

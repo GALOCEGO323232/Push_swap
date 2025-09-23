@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:18:28 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/17 16:18:29 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/23 13:21:24 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/23 13:21:24 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sa(t_list **a, t_list **b)
 {
-	t_list *fno;
-	t_list *sno;
-	t_list *tno;
+	t_list		*fno;
+	t_list		*sno;
+	t_list		*tno;
 
 	if (!*a || (*a)->next == NULL)
 		return ;
