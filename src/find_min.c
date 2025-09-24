@@ -6,13 +6,13 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:45:49 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/23 15:54:35 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:16:45 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_min(t_list *a)
+int	find_min(t_list *a)
 {
 	t_list	*tmp;
 	t_list	*min;
@@ -21,8 +21,7 @@ int		find_min(t_list *a)
 		return (NULL);
 	min = a;
 	tmp = tmp->next;
-
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->content < min->content)
 			min = tmp;

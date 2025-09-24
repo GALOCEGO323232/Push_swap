@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_max.c                                         :+:      :+:    :+:   */
+/*   validate_argv.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 15:50:01 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/24 14:17:27 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/24 14:49:16 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/24 14:59:10 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max(t_list *a)
-{
-	t_list	*tmp;
-	t_list	*max;
+void parse_input(int argc, char **argv, t_list **a);
 
-	if (!a)
-		return (NULL);
-	max = a;
-	tmp = tmp->next;
-	while (tmp)
-	{
-		if (tmp->content > max->content)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
+void add_numbers_to_stack(t_list **a, char **nums, int count);
+
+
