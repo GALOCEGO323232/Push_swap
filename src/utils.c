@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:19:49 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/24 14:59:01 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/25 10:26:38 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,34 @@ void	bring_mim_to_top(t_list **a, t_list **b)
 	pb(a, b);
 }
 
-int	contains_space(char *str);
+int	contains_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	push_to_stack(t_list **a, int num)
+{
+	t_list	*node;
+
+	node = malloc(sizeof(t_list));
+	node->content = num;
+	node->next = NULL;
+	node->prev = NULL;
+	if (*a == NULL)
+		*a = node;
+	if (*a != NULL)
+	{
+		node->next = *a;
+		(*a)->prev = node;
+		*a = node;
+	}
+}
