@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	pa(t_list **a, t_list **b)
+void	pa(t_node **a, t_node **b)
 {
-	t_list		*node;
+	t_node		*node;
 
 	if (!*b)
 		return ;
@@ -27,4 +27,5 @@ void	pa(t_list **a, t_list **b)
 		(*a)->prev = node;
 	*a = node;
 	node->prev = NULL;
+	ft_printf("pa\n");
 }

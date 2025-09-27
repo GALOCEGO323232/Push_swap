@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:19:49 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/25 10:26:38 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/27 16:48:23 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	error_exit(char *msg)
 	exit(1);
 }
 
-int	find_pos(t_list *a, int value)
+int	find_pos(t_node *a, int value)
 {
-	t_list	*node;
+	t_node	*node;
 	int		i;
 
 	node = a;
@@ -36,7 +36,7 @@ int	find_pos(t_list *a, int value)
 	return (-1);
 }
 
-void	bring_mim_to_top(t_list **a, t_list **b)
+void	bring_mim_to_top(t_node **a, t_node **b)
 {
 	int	min;
 	int	pos;
@@ -61,7 +61,7 @@ int	contains_space(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == ' ')
 			return (1);
@@ -70,20 +70,25 @@ int	contains_space(char *str)
 	return (0);
 }
 
-void	push_to_stack(t_list **a, int num)
+void	push_to_stack(t_node **a, int num)
 {
-	t_list	*node;
+	t_node	*node;
+	t_node	*tmp;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_node));
+	if (!node)
+		error_exit("malloc failed");
 	node->content = num;
 	node->next = NULL;
 	node->prev = NULL;
 	if (*a == NULL)
-		*a = node;
-	if (*a != NULL)
 	{
-		node->next = *a;
-		(*a)->prev = node;
 		*a = node;
+		return ;
 	}
+	tmp = *a;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+	node->prev = tmp;
 }

@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	pb(t_list **a, t_list **b)
+void	pb(t_node **a, t_node **b)
 {
-	t_list		*node;
+	t_node		*node;
 
 	if (!*a)
 		return ;
@@ -27,4 +27,5 @@ void	pb(t_list **a, t_list **b)
 		(*b)->prev = node;
 	*b = node;
 	node->prev = NULL;
+	ft_printf("pb\n");
 }

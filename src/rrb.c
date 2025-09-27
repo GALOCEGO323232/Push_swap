@@ -12,18 +12,20 @@
 
 #include "push_swap.h"
 
-void	rrb(t_list **a, t_list **b)
+void	rrb(t_node **a, t_node **b)
 {
-	t_list		*before_last;
-	t_list		*node;
+	t_node	*before_last;
+	t_node	*node;
 
-	node = *a;
+	(void)a;
+	node = *b;
 	while (node->next != NULL)
 		node = node->next;
 	before_last = node->prev;
 	before_last->next = NULL;
-	node->next = *a;
-	(*a)->prev = node;
+	node->next = *b;
+	(*b)->prev = node;
 	node->prev = NULL;
-	*a = node;
+	*b = node;
+	ft_printf("rrb\n");
 }

@@ -12,12 +12,13 @@
 
 #include "push_swap.h"
 
-void	sa(t_list **a, t_list **b)
+void	sa(t_node **a, t_node **b)
 {
-	t_list		*fno;
-	t_list		*sno;
-	t_list		*tno;
+	t_node	*fno;
+	t_node	*sno;
+	t_node	*tno;
 
+	(void)b;
 	if (!*a || (*a)->next == NULL)
 		return ;
 	fno = *a;
@@ -30,4 +31,5 @@ void	sa(t_list **a, t_list **b)
 	sno->prev = NULL;
 	fno->prev = sno;
 	*a = sno;
+	ft_printf("sa\n");
 }

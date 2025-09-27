@@ -6,17 +6,17 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:23:18 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/24 14:16:02 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/27 16:47:07 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_list **a, t_list **b)
+int	is_sorted(t_node **a)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
-	if (!*a || (*a)->next)
+	if (!*a || !(*a)->next)
 		return (1);
 	tmp = *a;
 	while (tmp->next != NULL)

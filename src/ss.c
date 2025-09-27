@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_node **a, t_node **b)
 {
 	sa(a, b);
 	sb(a, b);
+	ft_printf("ss\n");
 }

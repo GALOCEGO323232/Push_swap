@@ -12,11 +12,12 @@
 
 #include "push_swap.h"
 
-void	rra(t_list **a, t_list **b)
+void	rra(t_node **a, t_node **b)
 {
-	t_list		*before_last;
-	t_list		*node;
+	t_node	*before_last;
+	t_node	*node;
 
+	(void)b;
 	node = *a;
 	while (node->next != NULL)
 		node = node->next;
@@ -26,4 +27,5 @@ void	rra(t_list **a, t_list **b)
 	(*a)->prev = node;
 	node->prev = NULL;
 	*a = node;
+	ft_printf("rra\n");
 }

@@ -6,26 +6,26 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:45:49 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/24 14:16:45 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/27 14:37:35 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(t_list *a)
+int	find_min(t_node *a)
 {
-	t_list	*tmp;
-	t_list	*min;
+	t_node	*tmp;
+	t_node	*min;
 
 	if (!a)
-		return (NULL);
+		return (-1);
 	min = a;
-	tmp = tmp->next;
+	tmp = a->next;
 	while (tmp)
 	{
 		if (tmp->content < min->content)
 			min = tmp;
 		tmp = tmp->next;
 	}
-	return (min);
+	return (min->content);
 }

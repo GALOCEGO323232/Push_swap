@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	rrr(t_list **a, t_list **b)
+void	rrr(t_node **a, t_node **b)
 {
 	rra(a, b);
 	rrb(a, b);
+	ft_printf("rrr\n");
 }

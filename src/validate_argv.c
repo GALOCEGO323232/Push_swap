@@ -6,56 +6,52 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:49:16 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/25 12:03:43 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/09/27 16:50:45 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void add_numbers_to_stack(t_list **a, char **nums, int count)
+int	is_number(char *str)
 {
-	int	i;
-	int	num;
-
-	i = 0;
-	while(nums[i] != NULL)
+	if (*str == '-' || *str == '+')
+		str++;
+	if (!*str)
+		return (0);
+	while (*str)
 	{
-		num = ft_atoi(nums[i]);
-		push_to_stack(a, num);
-		i++;
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
 	}
+	return (1);
 }
-void	parse_single_string(t_list **a, char *str)
+
+void	parse_single_string(t_node **a, char *str)
 {
-	int		space;
 	char	**nums;
-	int		count;
 	int		i;
 
-	i = -1;
-	count = 0;
-	space = contains_space(str);
-	if (space == 1)
+	if (contains_space(str))
 	{
 		nums = ft_split(str, ' ');
-		while (nums[++i] != NULL)
-			count++;
-		add_numbers_to_stack(a, nums, count);
 		i = 0;
 		while (nums[i] != NULL)
 		{
+			if (!is_number(nums[i]))
+				error_exit("invalid number");
+			push_to_stack(a, ft_atoi(nums[i]));
 			free(nums[i]);
 			i++;
 		}
 		free(nums);
 	}
-	else if (space == 0)
+	else
 		push_to_stack(a, ft_atoi(str));
 }
 
-void parse_input(int argc, char **argv, t_list **a)
+void	parse_input(int argc, char **argv, t_node **a)
 {
-	int	space;
 	int	i;
 
 	i = 1;
@@ -63,15 +59,16 @@ void parse_input(int argc, char **argv, t_list **a)
 		error_exit("Invalid arguments.");
 	else if (argc == 2)
 		parse_single_string(a, argv[i]);
-	else if (argc > 2)
+	else
 	{
 		while (argv[i] != NULL)
 		{
-			if (contains_space(argv[i]) == 1)
+			if (contains_space(argv[i]))
 				error_exit("Invalid input: unexpected spaces.");
+			if (!is_number(argv[i]))
+				error_exit("invalid number");
+			push_to_stack(a, ft_atoi(argv[i]));
 			i++;
 		}
-		add_numbers_to_stack(a, argv + 1, argc - 1);
 	}
 }
-
