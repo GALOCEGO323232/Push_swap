@@ -6,13 +6,13 @@
 #    By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/17 13:44:26 by kgagliar          #+#    #+#              #
-#    Updated: 2025/09/27 17:00:57 by kgagliar         ###   ########.fr        #
+#    Updated: 2025/10/02 16:32:01 by kgagliar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g
 SRC_DIR			= src
 LIBFT_DIR		= lib/libft
 LIBFT			= $(LIBFT_DIR)/libft.a
@@ -25,7 +25,7 @@ SRCS = $(SRC_DIR)/find_max.c \
        $(SRC_DIR)/pa.c \
        $(SRC_DIR)/pb.c \
        $(SRC_DIR)/ra.c \
-       $(SRC_DIR)/raditxsort.c \
+       $(SRC_DIR)/radixsort.c \
        $(SRC_DIR)/rb.c \
        $(SRC_DIR)/rr.c \
        $(SRC_DIR)/rra.c \
@@ -38,6 +38,7 @@ SRCS = $(SRC_DIR)/find_max.c \
        $(SRC_DIR)/stack_size.c \
        $(SRC_DIR)/utils.c \
        $(SRC_DIR)/validate_argv.c \
+       $(SRC_DIR)/normalize_stack.c\
 
 OBJS		= $(SRCS:.c=.o)
 

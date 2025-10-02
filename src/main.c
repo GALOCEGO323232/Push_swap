@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:44:16 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/27 17:12:50 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:26:30 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,6 @@ int	check_duplicate(t_node **a)
 	return (1);
 }
 
-int	check_int_limits(t_node **a)
-{
-	int		min;
-	int		max;
-	t_node	*node;
-
-	min = -2147483648;
-	max = 2147483647;
-	node = *a;
-	while (node != NULL)
-	{
-		if (node->content < min|| node->content > max)
-			error_exit("value out of int range");
-		node = node->next;
-	}
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -59,7 +41,6 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	parse_input(argc, argv, &a);
-	check_int_limits(&a);
 	check_duplicate(&a);
 	if (is_sorted(&a))
 		return (0);
@@ -68,8 +49,14 @@ int	main(int argc, char **argv)
 		sa(&a, NULL);
 	else if (size == 3)
 		three_sorts(&a);
+	else if (size == 4)
+		four_sorts(&a, &b);
 	else if (size == 5)
 		five_sorts(&a, &b);
 	else
+	{
+		normalize_stack(a);
 		radix_sort(&a, &b);
+	}
+	return (0);
 }

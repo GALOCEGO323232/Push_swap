@@ -6,11 +6,27 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:49:16 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/27 16:50:45 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:29:04 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	safe_ft_atoi(const char *str)
+{
+	long	num;
+	int		min;
+	int		max;
+
+	min = -2147483648L;
+	max = 2147483647L;
+	if (!is_number((char *)str))
+		error_exit("Error");
+	num = ft_atol(str);
+	if (num < min || num > max)
+		error_exit("Error");
+	return ((int)num);
+}
 
 int	is_number(char *str)
 {
@@ -38,16 +54,18 @@ void	parse_single_string(t_node **a, char *str)
 		i = 0;
 		while (nums[i] != NULL)
 		{
-			if (!is_number(nums[i]))
-				error_exit("invalid number");
-			push_to_stack(a, ft_atoi(nums[i]));
+			push_to_stack(a, safe_ft_atoi(nums[i]));
 			free(nums[i]);
 			i++;
 		}
 		free(nums);
 	}
 	else
-		push_to_stack(a, ft_atoi(str));
+	{
+		if (!is_number(str))
+			error_exit("Error");
+		push_to_stack(a, safe_ft_atoi(str));
+	}
 }
 
 void	parse_input(int argc, char **argv, t_node **a)
@@ -56,19 +74,17 @@ void	parse_input(int argc, char **argv, t_node **a)
 
 	i = 1;
 	if (argc == 1)
-		error_exit("Invalid arguments.");
-	else if (argc == 2)
-		parse_single_string(a, argv[i]);
-	else
+		error_exit("Error");
+	while (i < argc)
 	{
-		while (argv[i] != NULL)
+		if (contains_space(argv[i]))
+			parse_single_string(a, argv[i]);
+		else
 		{
-			if (contains_space(argv[i]))
-				error_exit("Invalid input: unexpected spaces.");
 			if (!is_number(argv[i]))
-				error_exit("invalid number");
-			push_to_stack(a, ft_atoi(argv[i]));
-			i++;
+				error_exit("Error");
+			push_to_stack(a, safe_ft_atoi(argv[i]));
 		}
+		i++;
 	}
 }

@@ -21,6 +21,8 @@ void	ra(t_node **a, t_node **b)
 	t_node	*finallist;
 
 	(void)b;
+	if (!a ||!*a || !(*a)->next)
+		return ;
 	node = *a;
 	finallist = *a;
 	while (finallist->next != NULL)
@@ -31,4 +33,23 @@ void	ra(t_node **a, t_node **b)
 	node->prev = finallist;
 	node->next = NULL;
 	ft_printf("ra\n");
+}
+
+void	silent_ra(t_node **a, t_node **b)
+{
+	t_node	*node;
+	t_node	*finallist;
+
+	(void)b;
+	if (!a ||!*a || !(*a)->next)
+		return ;
+	node = *a;
+	finallist = *a;
+	while (finallist->next != NULL)
+		finallist = finallist->next;
+	*a = node->next;
+	(*a)->prev = NULL;
+	finallist->next = node;
+	node->prev = finallist;
+	node->next = NULL;
 }

@@ -14,7 +14,6 @@
 
 void	rrr(t_node **a, t_node **b)
 {
-	rra(a, b);
-	rrb(a, b);
-	ft_printf("rrr\n");
+	silent_rra(a, b);
+	silent_rrb(a, b);
 }

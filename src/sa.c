@@ -33,3 +33,24 @@ void	sa(t_node **a, t_node **b)
 	*a = sno;
 	ft_printf("sa\n");
 }
+
+void	silent_sa(t_node **a, t_node **b)
+{
+	t_node	*fno;
+	t_node	*sno;
+	t_node	*tno;
+
+	(void)b;
+	if (!*a || (*a)->next == NULL)
+		return ;
+	fno = *a;
+	sno = (*a)->next;
+	tno = sno->next;
+	fno->next = tno;
+	if (tno)
+		tno->prev = fno;
+	sno->next = fno;
+	sno->prev = NULL;
+	fno->prev = sno;
+	*a = sno;
+}

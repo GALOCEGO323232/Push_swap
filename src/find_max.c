@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:50:01 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/27 14:37:19 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:12:46 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	find_max(t_node *a)
 	t_node	*max;
 
 	if (!a)
-		return (-1);
+		error_exit("Error");
 	max = a;
 	tmp = a->next;
 	while (tmp)

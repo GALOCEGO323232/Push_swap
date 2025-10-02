@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 12:53:44 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/27 14:32:31 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:23:15 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ void	three_sorts(t_node **a)
 		sa(a, NULL);
 		ra(a, NULL);
 	}
+}
+void	four_sorts(t_node **a, t_node **b)
+{
+	int	min_pos;
+
+	min_pos = find_pos(*a, find_min(*a));
+	while (min_pos != 0)
+	{
+		if (min_pos <= stack_size(*a) / 2)
+			ra(a, NULL);
+		else
+			rra(a, NULL);
+		min_pos = find_pos(*a, find_min(*a));
+	}
+	pb(a, b);
+	three_sorts(a);
+	pa(a, b);
+	
 }
 
 void	five_sorts(t_node **a, t_node **b)
