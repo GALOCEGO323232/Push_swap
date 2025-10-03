@@ -16,4 +16,5 @@ void	ss(t_node **a, t_node **b)
 {
 	silent_sa(a, b);
 	silent_sb(a, b);
+	ft_printf("ss\n");
 }

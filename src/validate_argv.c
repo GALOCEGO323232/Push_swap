@@ -15,16 +15,16 @@
 int	safe_ft_atoi(const char *str)
 {
 	long	num;
-	int		min;
-	int		max;
+	long	min;
+	long	max;
 
 	min = -2147483648L;
 	max = 2147483647L;
-	if (!is_number((char *)str))
-		error_exit("Error");
+	if (!is_number(str))
+		error_exit("Error", NULL, NULL);
 	num = ft_atol(str);
 	if (num < min || num > max)
-		error_exit("Error");
+		error_exit("Error", NULL, NULL);
 	return ((int)num);
 }
 
@@ -51,6 +51,8 @@ void	parse_single_string(t_node **a, char *str)
 	if (contains_space(str))
 	{
 		nums = ft_split(str, ' ');
+		if (!nums)
+			return ;
 		i = 0;
 		while (nums[i] != NULL)
 		{
@@ -63,7 +65,7 @@ void	parse_single_string(t_node **a, char *str)
 	else
 	{
 		if (!is_number(str))
-			error_exit("Error");
+			error_exit("Error", NULL, NULL);
 		push_to_stack(a, safe_ft_atoi(str));
 	}
 }
@@ -74,7 +76,7 @@ void	parse_input(int argc, char **argv, t_node **a)
 
 	i = 1;
 	if (argc == 1)
-		error_exit("Error");
+		error_exit("Error", NULL, NULL);
 	while (i < argc)
 	{
 		if (contains_space(argv[i]))
@@ -82,7 +84,7 @@ void	parse_input(int argc, char **argv, t_node **a)
 		else
 		{
 			if (!is_number(argv[i]))
-				error_exit("Error");
+				error_exit("Error", NULL, NULL);
 			push_to_stack(a, safe_ft_atoi(argv[i]));
 		}
 		i++;

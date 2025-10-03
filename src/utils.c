@@ -12,10 +12,14 @@
 
 #include "push_swap.h"
 
-void	error_exit(char *msg)
+void	error_exit(char *msg, t_node **a, t_node **b)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
+	if (a && *a)
+		free_stack(*a);
+	if (b && *b)
+		free_stack(*b);
 	exit(1);
 }
 
@@ -77,7 +81,7 @@ void	push_to_stack(t_node **a, int num)
 
 	node = malloc(sizeof(t_node));
 	if (!node)
-		error_exit("malloc failed");
+		error_exit("Error", NULL, NULL);
 	node->content = num;
 	node->next = NULL;
 	node->prev = NULL;

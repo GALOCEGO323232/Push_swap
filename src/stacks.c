@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_max.c                                         :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 15:50:01 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/10/02 16:12:46 by kgagliar         ###   ########.fr       */
+/*   Created: 2025/09/23 14:26:11 by kgagliar          #+#    #+#             */
+/*   Updated: 2025/09/27 14:32:46 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max(t_node *a)
+int	stack_size(t_node *a)
 {
-	t_node	*tmp;
-	t_node	*max;
+	t_node	*node;
+	int		i;
 
 	if (!a)
-		error_exit("Error");
-	max = a;
-	tmp = a->next;
-	while (tmp)
+		return (0);
+	i = 0;
+	node = a;
+	while (node)
 	{
-		if (tmp->content > max->content)
-			max = tmp;
-		tmp = tmp->next;
+		i++;
+		node = node->next;
 	}
-	return (max->content);
+	return (i);
+}
+
+void	free_stack(t_node *stack)
+{
+	t_node	*tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
 }
