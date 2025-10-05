@@ -35,7 +35,7 @@ SRCS = $(SRC_DIR)/find_max.c \
        $(SRC_DIR)/sb.c \
        $(SRC_DIR)/sorts.c \
        $(SRC_DIR)/ss.c \
-       $(SRC_DIR)/stack_size.c \
+       $(SRC_DIR)/stacks.c \
        $(SRC_DIR)/utils.c \
        $(SRC_DIR)/validate_argv.c \
        $(SRC_DIR)/normalize_stack.c\

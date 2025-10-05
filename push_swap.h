@@ -63,5 +63,6 @@ void	silent_rrb(t_node **a, t_node **b);
 void	silent_rra(t_node **a, t_node **b);
 void	silent_rb(t_node **a, t_node **b);
 void	silent_ra(t_node **a, t_node **b);
+void	free_stack(t_node *stack);
 
 #endif
