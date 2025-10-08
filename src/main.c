@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	parse_input(argc, argv, &a);
+	parse_input(argc, argv, &a, &b);
 	check_duplicate(&a);
 	if (is_sorted(&a))
 	{

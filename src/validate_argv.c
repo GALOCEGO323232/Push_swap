@@ -11,25 +11,12 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-int	safe_ft_atoi(const char *str)
+static int	is_number(const char *str)
 {
-	long	num;
-	long	min;
-	long	max;
-
-	min = -2147483648L;
-	max = 2147483647L;
-	if (!is_number(str))
-		error_exit("Error", NULL, NULL);
-	num = ft_atol(str);
-	if (num < min || num > max)
-		error_exit("Error", NULL, NULL);
-	return ((int)num);
-}
-
-int	is_number(const char *str)
-{
+	if (!str || !*str)
+		return (0);
 	if (*str == '-' || *str == '+')
 		str++;
 	if (!*str)
@@ -43,50 +30,72 @@ int	is_number(const char *str)
 	return (1);
 }
 
-void	parse_single_string(t_node **a, char *str)
+static long	safe_atol(const char *str, t_node **a, t_node **b)
+{
+	long	num;
+
+	if (!is_number(str))
+		error_exit("Error", a, b);
+	num = ft_atol(str);
+	if (num < -2147483648 || num > 2147483647)
+		error_exit("Error", a, b);
+	return (num);
+}
+
+static void	process_split(t_node **a, t_node **b, char **nums)
+{
+	long	num;
+	int		i;
+
+	i = 0;
+	while (nums[i])
+	{
+		if (!is_number(nums[i]))
+		{
+			ft_free_split(nums);
+			error_exit("Error", a, b);
+		}
+		num = ft_atol(nums[i]);
+		if (num < -2147483648 || num > 2147483647)
+		{
+			ft_free_split(nums);
+			error_exit("Error", a, b);
+		}
+		push_to_stack(a, (int)num);
+		i++;
+	}
+	ft_free_split(nums);
+}
+
+void	parse_single_string(t_node **a, t_node **b, char *str)
 {
 	char	**nums;
-	int		i;
+	long	num;
 
 	if (contains_space(str))
 	{
 		nums = ft_split(str, ' ');
 		if (!nums)
-			return ;
-		i = 0;
-		while (nums[i] != NULL)
-		{
-			push_to_stack(a, safe_ft_atoi(nums[i]));
-			free(nums[i]);
-			i++;
-		}
-		free(nums);
+			error_exit("Error", a, b);
+		process_split(a, b, nums);
 	}
 	else
 	{
-		if (!is_number(str))
-			error_exit("Error", NULL, NULL);
-		push_to_stack(a, safe_ft_atoi(str));
+		num = safe_atol(str, a, b);
+		push_to_stack(a, (int)num);
 	}
 }
 
-void	parse_input(int argc, char **argv, t_node **a)
+void	parse_input(int argc, char **argv, t_node **a, t_node **b)
 {
 	int	i;
 
+	if (argc < 2)
+		error_exit("Error", a, b);
 	i = 1;
-	if (argc == 1)
-		error_exit("Error", NULL, NULL);
 	while (i < argc)
 	{
-		if (contains_space(argv[i]))
-			parse_single_string(a, argv[i]);
-		else
-		{
-			if (!is_number(argv[i]))
-				error_exit("Error", NULL, NULL);
-			push_to_stack(a, safe_ft_atoi(argv[i]));
-		}
+		parse_single_string(a, b, argv[i]);
 		i++;
 	}
 }

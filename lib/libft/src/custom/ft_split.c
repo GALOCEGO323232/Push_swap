@@ -6,7 +6,7 @@
 /*   By: kgagliar <kgagliar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:03:41 by kgagliar          #+#    #+#             */
-/*   Updated: 2025/09/15 14:29:28 by kgagliar         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:28:11 by kgagliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 static void	ft_free_split(char **split, int word_index)
 {
-	while (word_index-- > 0)
-		free(split[word_index]);
+	int	i;
+
+	i = 0;
+	while (i < word_index)
+	{
+		free(split[i]);
+		i++;
+	}
 	free(split);
 }
 

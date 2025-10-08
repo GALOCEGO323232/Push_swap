@@ -74,25 +74,17 @@ int	contains_space(char *str)
 	return (0);
 }
 
-void	push_to_stack(t_node **a, int num)
+void	ft_free_split(char **split)
 {
-	t_node	*node;
-	t_node	*tmp;
+	int	i;
 
-	node = malloc(sizeof(t_node));
-	if (!node)
-		error_exit("Error", NULL, NULL);
-	node->content = num;
-	node->next = NULL;
-	node->prev = NULL;
-	if (*a == NULL)
-	{
-		*a = node;
+	if (!split)
 		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
 	}
-	tmp = *a;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = node;
-	node->prev = tmp;
+	free(split);
 }

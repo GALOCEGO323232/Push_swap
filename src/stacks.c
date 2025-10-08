@@ -40,3 +40,26 @@ void	free_stack(t_node *stack)
 		free(tmp);
 	}
 }
+
+void	push_to_stack(t_node **a, int num)
+{
+	t_node	*node;
+	t_node	*tmp;
+
+	node = malloc(sizeof(t_node));
+	if (!node)
+		error_exit("Error", NULL, NULL);
+	node->content = num;
+	node->next = NULL;
+	node->prev = NULL;
+	if (*a == NULL)
+	{
+		*a = node;
+		return ;
+	}
+	tmp = *a;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+	node->prev = tmp;
+}
