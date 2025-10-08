@@ -42,6 +42,7 @@ void	three_sorts(t_node **a)
 		ra(a, NULL);
 	}
 }
+
 void	four_sorts(t_node **a, t_node **b)
 {
 	int	min_pos;
@@ -58,7 +59,6 @@ void	four_sorts(t_node **a, t_node **b)
 	pb(a, b);
 	three_sorts(a);
 	pa(a, b);
-	
 }
 
 void	five_sorts(t_node **a, t_node **b)

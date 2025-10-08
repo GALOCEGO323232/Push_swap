@@ -25,7 +25,7 @@ typedef struct s_node
 	int				index;
 }	t_node;
 
-void	error_exit(char *msg);
+void	error_exit(char *msg, t_node **a, t_node **b);
 void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
 void	sa(t_node **a, t_node **b);
@@ -54,7 +54,7 @@ void	five_sorts(t_node **a, t_node **b);
 void	radix_sort(t_node **a, t_node **b);
 int		check_duplicate(t_node **a);
 int		safe_ft_atoi(const char *str);
-int		is_number(char *str);
+int		is_number(const char *str);
 void	normalize_stack(t_node *a);
 void	four_sorts(t_node **a, t_node **b);
 void	silent_sa(t_node **a, t_node **b);

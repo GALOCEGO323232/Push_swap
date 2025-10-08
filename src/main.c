@@ -24,7 +24,7 @@ int	check_duplicate(t_node **a)
 		while (checker != NULL)
 		{
 			if (node->content == checker->content)
-				error_exit("duplicate");
+				error_exit("Error", a, NULL);
 			checker = checker->next;
 		}
 		node = node->next;
@@ -32,7 +32,7 @@ int	check_duplicate(t_node **a)
 	return (1);
 }
 
-static void sort_stack(t_node **a, t_node **b, int size)
+static void	sort_stack(t_node **a, t_node **b, int size)
 {
 	if (size == 2)
 		sa(a, NULL);

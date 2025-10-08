@@ -18,7 +18,7 @@ int	find_min(t_node *a)
 	t_node	*min;
 
 	if (!a)
-		error_exit("Error");
+		error_exit("Error", &a, NULL);
 	min = a;
 	tmp = a->next;
 	while (tmp)

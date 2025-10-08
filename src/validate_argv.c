@@ -28,7 +28,7 @@ int	safe_ft_atoi(const char *str)
 	return ((int)num);
 }
 
-int	is_number(char *str)
+int	is_number(const char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;

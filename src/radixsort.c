@@ -23,7 +23,7 @@ void	process_bit(t_node **a, t_node **b, int bit)
 	{
 		if ((((*a)->index >> bit) & 1) == 0)
 			pb(a, b);
-		else 
+		else
 			ra(a, b);
 		i++;
 	}

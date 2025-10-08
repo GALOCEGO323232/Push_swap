@@ -18,7 +18,7 @@ int	find_max(t_node *a)
 	t_node	*max;
 
 	if (!a)
-		error_exit("Error");
+		error_exit("Error", &a, NULL);
 	max = a;
 	tmp = a->next;
 	while (tmp)
