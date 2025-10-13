@@ -47,14 +47,13 @@ int		find_pos(t_node *a, int value);
 void	bring_mim_to_top(t_node **a, t_node **b);
 void	push_to_stack(t_node **a, int num);
 int		contains_space(char *str);
-void	parse_single_string(t_node **a, char *str);
-void	parse_input(int argc, char **argv, t_node **a);
+void	parse_single_string(t_node **a, t_node **b, char *str);
+void	parse_input(int argc, char **argv, t_node **a, t_node **b);
 void	process_bit(t_node **a, t_node **b, int bit);
 void	five_sorts(t_node **a, t_node **b);
 void	radix_sort(t_node **a, t_node **b);
 int		check_duplicate(t_node **a);
 int		safe_ft_atoi(const char *str);
-int		is_number(const char *str);
 void	normalize_stack(t_node *a);
 void	four_sorts(t_node **a, t_node **b);
 void	silent_sa(t_node **a, t_node **b);
@@ -64,5 +63,6 @@ void	silent_rra(t_node **a, t_node **b);
 void	silent_rb(t_node **a, t_node **b);
 void	silent_ra(t_node **a, t_node **b);
 void	free_stack(t_node *stack);
+void	ft_free_split(char **split);
 
 #endif
