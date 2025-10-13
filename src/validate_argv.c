@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 static int	is_number(const char *str)
 {
@@ -90,8 +89,8 @@ void	parse_input(int argc, char **argv, t_node **a, t_node **b)
 {
 	int	i;
 
-	if (argc < 2)
-		error_exit("Error", a, b);
+	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
+		return ;
 	i = 1;
 	while (i < argc)
 	{
