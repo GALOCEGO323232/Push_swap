@@ -74,8 +74,11 @@ void	parse_single_string(t_node **a, t_node **b, char *str)
 	if (contains_space(str))
 	{
 		nums = ft_split(str, ' ');
-		if (!nums)
+		if (!nums || !nums[0])
+		{
+			ft_free_split(nums);
 			error_exit("Error", a, b);
+		}
 		process_split(a, b, nums);
 	}
 	else
@@ -89,7 +92,7 @@ void	parse_input(int argc, char **argv, t_node **a, t_node **b)
 {
 	int	i;
 
-	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
+	if (argc < 2)
 		return ;
 	i = 1;
 	while (i < argc)
