@@ -77,11 +77,23 @@ OBJS = $(SRCS:.c=.o)
 OBJS_EXTRA = $(SRCS_EXTRA:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-all: $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
+all: $(NAME)
+
+$(NAME): $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
+	@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
+	@echo "📦 Libft compilada com sucesso!"
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
+	@rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
+	@echo "🧹 Objetos removidos."
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "🗑️  Libft removida."
+
+re: fclean all
+
+.PHONY: all clean fclean re

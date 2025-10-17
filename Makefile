@@ -38,36 +38,33 @@ SRCS = $(SRC_DIR)/find_max.c \
        $(SRC_DIR)/stacks.c \
        $(SRC_DIR)/utils.c \
        $(SRC_DIR)/validate_argv.c \
-       $(SRC_DIR)/normalize_stack.c\
+       $(SRC_DIR)/normalize_stack.c
 
-OBJS		= $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	@echo "\033[0;32mCompilando libft...\033[0m"
+	@echo "\033[0;32m📚 Compilando libft...\033[0m"
 	@$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
+$(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(INCLUDES) -o $(NAME)
-	@echo "\033[1;32m✓ Compilado com sucesso: $(NAME)\033[0m"
+	@echo "\033[1;32m✅ Compilado com sucesso: $(NAME)\033[0m"
 
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(BONUS_DIR)/%.o: $(BONUS_DIR)/%.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	rm -f $(OBJS)
-	@echo "\033[0;33mObjetos removidos!\033[0m"
+	@rm -f $(OBJS)
+	@echo "\033[0;33m🧹 Objetos removidos!\033[0m"
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -f $(NAME)
-	@echo "\033[0;31mTudo removido!\033[0m"
+	@rm -f $(NAME)
+	@echo "\033[0;31m🗑️  Tudo removido!\033[0m"
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

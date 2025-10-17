@@ -74,7 +74,7 @@ void	parse_single_string(t_node **a, t_node **b, char *str)
 	if (contains_space(str))
 	{
 		nums = ft_split(str, ' ');
-		if (!nums || !nums[0])
+		if (!nums || !nums[0] || !nums[0][0])
 		{
 			ft_free_split(nums);
 			error_exit("Error", a, b);

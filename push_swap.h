@@ -53,7 +53,7 @@ void	process_bit(t_node **a, t_node **b, int bit);
 void	five_sorts(t_node **a, t_node **b);
 void	radix_sort(t_node **a, t_node **b);
 int		check_duplicate(t_node **a);
-int		safe_ft_atoi(const char *str);
+int		safe_ft_atoi(const char *str, t_node **a, t_node **b);
 void	normalize_stack(t_node *a);
 void	four_sorts(t_node **a, t_node **b);
 void	silent_sa(t_node **a, t_node **b);
